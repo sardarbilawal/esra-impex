@@ -66,7 +66,7 @@ const HeroSection = () => {
           >
             {/* Main Headline */}
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight"
+              className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
