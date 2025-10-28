@@ -3,14 +3,31 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { categories, galleryItems } from './const';
+import ProcessModal from '../../components/ProcessModal';
+import { processSteps, ProcessStep } from './processData';
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProcess, setSelectedProcess] = useState<ProcessStep | null>(null);
+
   const filteredItems = selectedCategory === 'all'
     ? galleryItems
     : galleryItems.filter(item => item.category === selectedCategory);
 
+  const handleProcessClick = (processId: string) => {
+    const process = processSteps.find(step => step.id === processId);
+    if (process) {
+      setSelectedProcess(process);
+      setIsModalOpen(true);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProcess(null);
+  };
+  console.log(selectedProcess)
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -37,8 +54,8 @@ export default function Gallery() {
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-6 py-2 rounded-full font-medium transition-colors ${selectedCategory === category.id
-                      ? 'bg-[#AF6641] text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? 'bg-[#AF6641] text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                 >
                   {category.name}
@@ -106,36 +123,60 @@ export default function Gallery() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="bg-[#e8f0ef] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🌱</span>
+              <div
+                className="text-center cursor-pointer group transition-all duration-300 hover:transform hover:scale-105"
+                onClick={() => handleProcessClick('sourcing')}
+              >
+                <div className="bg-[#e8f0ef] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#AF6641] group-hover:shadow-lg transition-all duration-300">
+                  <span className="text-3xl group-hover:scale-110 transition-transform duration-300">🌱</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Sourcing</h3>
-                <p className="text-gray-600 text-sm">Direct sourcing from trusted farmers and producers</p>
+                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#AF6641] transition-colors">Sourcing</h3>
+                <p className="text-gray-600 text-sm group-hover:text-gray-700">Direct sourcing from trusted farmers and producers</p>
+                <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[#AF6641] text-sm font-medium">Click to learn more →</span>
+                </div>
               </div>
 
-              <div className="text-center">
-                <div className="bg-[#e8f0ef] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🔍</span>
+              <div
+                className="text-center cursor-pointer group transition-all duration-300 hover:transform hover:scale-105"
+                onClick={() => handleProcessClick('quality-check')}
+              >
+                <div className="bg-[#e8f0ef] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#AF6641] group-hover:shadow-lg transition-all duration-300">
+                  <span className="text-3xl group-hover:scale-110 transition-transform duration-300">🔍</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Quality Check</h3>
-                <p className="text-gray-600 text-sm">Rigorous quality inspection and testing procedures</p>
+                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#AF6641] transition-colors">Quality Check</h3>
+                <p className="text-gray-600 text-sm group-hover:text-gray-700">Rigorous quality inspection and testing procedures</p>
+                <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[#AF6641] text-sm font-medium">Click to learn more →</span>
+                </div>
               </div>
 
-              <div className="text-center">
-                <div className="bg-[#e8f0ef] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">📦</span>
+              <div
+                className="text-center cursor-pointer group transition-all duration-300 hover:transform hover:scale-105"
+                onClick={() => handleProcessClick('packaging')}
+              >
+                <div className="bg-[#e8f0ef] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#AF6641] group-hover:shadow-lg transition-all duration-300">
+                  <span className="text-3xl group-hover:scale-110 transition-transform duration-300">📦</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Packaging</h3>
-                <p className="text-gray-600 text-sm">Professional packaging to maintain freshness</p>
+                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#AF6641] transition-colors">Packaging</h3>
+                <p className="text-gray-600 text-sm group-hover:text-gray-700">Professional packaging to maintain freshness</p>
+                <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[#AF6641] text-sm font-medium">Click to learn more →</span>
+                </div>
               </div>
 
-              <div className="text-center">
-                <div className="bg-[#e8f0ef] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🚢</span>
+              <div
+                className="text-center cursor-pointer group transition-all duration-300 hover:transform hover:scale-105"
+                onClick={() => handleProcessClick('shipping')}
+              >
+                <div className="bg-[#e8f0ef] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#AF6641] group-hover:shadow-lg transition-all duration-300">
+                  <span className="text-3xl group-hover:scale-110 transition-transform duration-300">🚢</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Shipping</h3>
-                <p className="text-gray-600 text-sm">Safe and timely delivery to global destinations</p>
+                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#AF6641] transition-colors">Shipping</h3>
+                <p className="text-gray-600 text-sm group-hover:text-gray-700">Safe and timely delivery to global destinations</p>
+                <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[#AF6641] text-sm font-medium">Click to learn more →</span>
+                </div>
               </div>
             </div>
           </div>
@@ -169,6 +210,62 @@ export default function Gallery() {
           </div>
         </div>
       </section>
+
+      {/* Process Modal */}
+      <ProcessModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        processStep={selectedProcess}
+      >
+        {selectedProcess?.title === "Sourcing" ?
+          <video
+            src="/videos/source.mp4"
+            controls
+            autoPlay
+            loop
+            muted
+            className="w-full rounded-lg shadow-md"
+          /> : selectedProcess?.title === "Quality Check" ?
+            <video
+              src="/videos/quality.mp4"
+              controls
+              autoPlay
+              loop
+              muted
+              className="w-full rounded-lg shadow-md"
+            /> : selectedProcess?.title === "Packaging" ?
+              <div>
+                <ul className="space-y-2">
+                  {[
+                    "Type: Box, Bag, Pouch, etc.",
+                    "Material: Plastic, Fabric, Eco-friendly options.",
+                    "Size: Custom sizes based on product (e.g., 500ml, Medium, 12x8 inches).",
+                    "Durability: Strong, tamper-proof, moisture-resistant options.",
+                    "Sustainability: Recyclable or biodegradable materials on request.",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-[#AF6641] mt-1">•</span>
+                      <span className="text-gray-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              : <div>
+                <ul className="space-y-2">
+                  {[
+                    "By sea",
+                    "By air",
+                    "By road",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-[#AF6641] mt-1">•</span>
+                      <span className="text-gray-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+        }
+      </ProcessModal>
     </div>
   );
 }

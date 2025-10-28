@@ -57,5 +57,40 @@ export const categories = [
       title: 'Lemon Varieties',
       description: 'Fresh aromatic lemons',
       image: '/images/gallery/vegetables/lemon.jpeg'
+    },
+     {
+      id: 8,
+      category: 'vegetables',
+      title: 'Onion Varieties',
+      description: 'Fresh aromatic onions',
+      image: '/images/gallery/vegetables/onionbeg.jpeg'
+    },
+    {
+      id: 9,
+      category: 'salt',
+      title: 'Pink Himalayan Salt Cuts',
+      description: 'Fresh aromatic salt cuts',
+      image: '/images/gallery/salt/cutsalt.jpeg'
+    },
+    {
+      id: 10,
+      category: 'fruits',
+      title: 'Orange Varieties',
+      description: 'Fresh aromatic oranges',
+      image: '/images/gallery/fruits/orange.jpeg'
+    },
+    {
+      id: 11,
+      category: 'fruits',
+      title: 'Oranges Varieties',
+      description: 'Fresh aromatic oranges',
+      image: '/images/gallery/fruits/oranges.jpeg'
+    },
+     {
+      id: 11,
+      category: 'fruits',
+      title: 'Mangoes Varieties',
+      description: 'Fresh aromatic mangoes',
+      image: '/images/gallery/fruits/mangoecover.jpeg'
     }
   ];

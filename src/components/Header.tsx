@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const Header = () => {
@@ -23,11 +24,17 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-                  <Link href="/" className="text-2xl font-bold text-[#AF6641] hover:text-[#a1532b] transition-colors">
-          Esra Impex
+          <Link href="/">
+          <Image
+            src="/logo2.svg"
+            alt="ESRA Impex"
+            width={130}    
+            height={10}
+            className="object-contain"
+            priority
+          />
         </Link>
 
           {/* Desktop Navigation */}
