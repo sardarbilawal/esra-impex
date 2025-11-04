@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const HeroSection = () => {
   const [currentProduct, setCurrentProduct] = useState(0);
@@ -66,14 +67,14 @@ const HeroSection = () => {
           >
             {/* Main Headline */}
             <motion.h1 
-              className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight"
+              className="flex text-4xl md:text-5xl font-bold text-gray-800 leading-tight"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="text-[#AF6641]">🌍</span> Sourced for Quality. 
-              <br />
-              <span className="text-[#305D50]">Delivered Globally.</span>
+              <Image src="/images/globe.jpg" alt="" width={130} height={40} />
+            <div className="flex flex-col ">  <span>Sourced for Quality</span>
+              <span className="text-[#305D50]">Delivered Globally</span></div>
             </motion.h1>
             
             {/* Sub-text */}

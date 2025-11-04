@@ -87,7 +87,7 @@ export const categories = [
       image: '/images/gallery/fruits/oranges.jpeg'
     },
      {
-      id: 11,
+      id: 12,
       category: 'fruits',
       title: 'Mangoes Varieties',
       description: 'Fresh aromatic mangoes',
