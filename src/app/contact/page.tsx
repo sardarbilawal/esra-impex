@@ -82,7 +82,6 @@ export default function Contact() {
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Contact Form */}
               <ContactForm
-                formType="quick"
                 title="Send Us a Message"
               />
 
