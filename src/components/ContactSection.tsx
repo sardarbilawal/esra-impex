@@ -77,7 +77,6 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <ContactForm 
-            formType="quick"
             title="Quick Inquiry"
           />
         </div>
